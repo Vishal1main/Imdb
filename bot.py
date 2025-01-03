@@ -11,9 +11,9 @@ logger = logging.getLogger(__name__)
 # Create the client instance
 app = Client(
     "IMDbBot",
-    bot_token=os.getenv("BOT_TOKEN"),  # Get bot token from environment variables
-    api_id=int(os.getenv("API_ID")),    # Get API ID from environment variables
-    api_hash=os.getenv("API_HASH")     # Get API Hash from environment variables
+    bot_token=os.getenv("7473136514:AAFFwsvkdTeSKEtys0yygJxNYSPp1e-4p10"),  # Get bot token from environment variables
+    api_id=int(os.getenv("23171051")),    # Get API ID from environment variables
+    api_hash=os.getenv("10331d5d712364f57ffdd23417f4513c")     # Get API Hash from environment variables
 )
 
 # Initialize IMDb instance
