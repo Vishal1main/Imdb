@@ -3,25 +3,21 @@ const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 
 const TOKEN = process.env.BOT_TOKEN;
-const URL = process.env.WEBHOOK_URL; // e.g., https://your-render-app.onrender.com
+const URL = process.env.WEBHOOK_URL;
 const PORT = process.env.PORT;
 
 const bot = new TelegramBot(TOKEN, { webHook: { port: PORT } });
+bot.setWebHook(`${URL}/bot${TOKEN}`);
 
-// Express setup
 const app = express();
 app.use(express.json());
 
-// Set webhook
-bot.setWebHook(`${URL}/bot${TOKEN}`);
-
-// Express route to receive webhook updates
 app.post(`/bot${TOKEN}`, (req, res) => {
   bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 
-// Main menu keyboard
+// Main menu
 const mainKeyboard = {
   reply_markup: {
     inline_keyboard: [
@@ -35,7 +31,6 @@ const mainKeyboard = {
   parse_mode: "HTML"
 };
 
-// Back keyboard
 const backKeyboard = {
   reply_markup: {
     inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back_home" }]]
@@ -47,20 +42,18 @@ const backKeyboard = {
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const name = msg.from.first_name;
-
-  const message = `👋 Hello <b>${name}</b>!\n\nWelcome to the <b>About Me</b> bot.\nChoose an option below:`;
-
-  bot.sendMessage(chatId, message, mainKeyboard);
+  const text = `👋 Hello <b>${name}</b>!\n\nWelcome to the <b>About Me</b> bot.\nChoose an option below:`;
+  bot.sendMessage(chatId, text, mainKeyboard);
 });
 
-// Callback handling
+// Callback handlers
 bot.on("callback_query", async (query) => {
+  const data = query.data;
   const chatId = query.message.chat.id;
   const messageId = query.message.message_id;
-  const data = query.data;
   const user = query.from;
 
-  let text;
+  let text = "";
   let keyboard = backKeyboard;
 
   switch (data) {
@@ -69,7 +62,7 @@ bot.on("callback_query", async (query) => {
       break;
 
     case "my_bots":
-      text = `🤖 <b>My Bots:</b>\n\n- <a href="https://t.me/ExampleBot1">@ExampleBot1</a>\n- <a href="https://t.me/ExampleBot2">@ExampleBot2</a>\n- <a href="https://t.me/ExampleBot3">@ExampleBot3</a>`;
+      text = `🤖 <b>My Bots:</b>\n\n- <a href="https://t.me/ExampleBot1">@ExampleBot1</a>\n- <a href="https://t.me/ExampleBot2">@ExampleBot2</a>`;
       break;
 
     case "my_id":
@@ -92,13 +85,13 @@ bot.on("callback_query", async (query) => {
       ...keyboard
     });
   } catch (err) {
-    console.error("Edit error:", err);
+    console.error("Edit error:", err.message);
   }
 
   bot.answerCallbackQuery(query.id);
 });
 
-// Start server
+// Server listen
 app.listen(PORT, () => {
-  console.log(`Bot is running on port ${PORT}`);
+  console.log(`✅ Bot is running on port ${PORT}`);
 });
