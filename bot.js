@@ -17,7 +17,7 @@ app.post(`/bot${TOKEN}`, (req, res) => {
   res.sendStatus(200);
 });
 
-// Main menu
+// Keyboards
 const mainKeyboard = {
   reply_markup: {
     inline_keyboard: [
@@ -38,7 +38,7 @@ const backKeyboard = {
   parse_mode: "HTML"
 };
 
-// /start command
+// /start handler
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const name = msg.from.first_name;
@@ -46,7 +46,7 @@ bot.onText(/\/start/, (msg) => {
   bot.sendMessage(chatId, text, mainKeyboard);
 });
 
-// Callback handlers
+// Handle buttons
 bot.on("callback_query", async (query) => {
   const data = query.data;
   const chatId = query.message.chat.id;
@@ -91,7 +91,9 @@ bot.on("callback_query", async (query) => {
   bot.answerCallbackQuery(query.id);
 });
 
-// Server listen
+// Start server
 app.listen(PORT, () => {
   console.log(`✅ Bot is running on port ${PORT}`);
+}).on("error", (err) => {
+  console.error("❌ Server error:", err.message);
 });
