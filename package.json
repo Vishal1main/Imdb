@@ -1,10 +1,10 @@
 {
   "name": "about-me-telegram-bot",
   "version": "1.0.0",
-  "description": "A Telegram bot with webhook support for About Me info",
-  "main": "index.js",
+  "description": "Telegram bot to show About Me info, bots, channels etc.",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bot.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -13,13 +13,5 @@
   },
   "engines": {
     "node": ">=16"
-  },
-  "keywords": [
-    "telegram",
-    "bot",
-    "nodejs",
-    "webhook"
-  ],
-  "author": "Your Name",
-  "license": "MIT"
+  }
 }
