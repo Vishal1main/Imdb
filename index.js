@@ -4,7 +4,7 @@ const TelegramBot = require("node-telegram-bot-api");
 
 const TOKEN = process.env.BOT_TOKEN;
 const URL = process.env.WEBHOOK_URL; // e.g., https://your-render-app.onrender.com
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 const bot = new TelegramBot(TOKEN, { webHook: { port: PORT } });
 
