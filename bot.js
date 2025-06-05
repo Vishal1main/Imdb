@@ -58,9 +58,9 @@ bot.action("mybots", (ctx) => {
 
 bot.action("myid", (ctx) => {
   ctx.editMessageText(
-    `*👤 My Info:*\n*━━━━━━━━━━➣*\n*┣⬡ NAME : Vishal*\n*┣⬡ AGE : 18+*\n*┣⬡ GENDER : MALE*\n*┣⬡ PLACE : India 🇮🇳*\n*┣⬡ LANGUAGE : Hindi*\n*┣⬡ STUDY IN :* ||ㅤㅤ||`,
+    `<b>👤 My Info:\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ᴩʟᴀᴄᴇ : Iɴᴅɪᴀ 🇮🇳\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ : ㅤㅤ</b>`,
     {
-      parse_mode: "MarkdownV2",
+      parse_mode: "HTML",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
