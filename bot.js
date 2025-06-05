@@ -1,5 +1,5 @@
 const express = require('express');
-const { Telegraf } = require('telegraf');
+const { Telegraf, Markup } = require('telegraf');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const app = express();
@@ -10,7 +10,7 @@ bot.start((ctx) => {
   const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
 
   ctx.reply(
-    `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎</b>\n\n<b>• In This Bot Have Some Info About Me</b>`,
+    `<b>Hey 👋 ${nameWithLink}</b> <b>Welcome To My About Bot 😎</b>\n\n<b>• In This Bot Have Some Info About Me</b>`,
     {
       parse_mode: "HTML",
       disable_web_page_preview: true,
@@ -58,7 +58,7 @@ bot.action("mybots", (ctx) => {
 
 bot.action("myid", (ctx) => {
   ctx.editMessageText(
-    `<b>👤 My Info:</b>\n<b>━━━━━━━━━━➣</b>\n<b>┣⬡ ɴᴀᴍᴇ :</b> Vishal\n<b>┣⬡ ᴀɢᴇ :</b> 18+\n<b>┣⬡ ɢᴇɴᴅᴇʀ :</b> ᴍᴀʟᴇ\n<b>┣⬡ ᴩʟᴀᴄᴇ :</b> Iɴᴅɪᴀ 🇮🇳\n<b>┣⬡ ʟᴀɴɢᴜᴀɢᴇ :</b> Hindi\n<b>┣⬡ ꜱᴛᴜᴅy ɪɴ :</b> <spoiler>ㅤㅤ</spoiler>`,
+    `<b>👤 My Info:</b>\n<b>━━━━━━━━━━➣</b>\n<b>┣⬡ ɴᴀᴍᴇ :</b> Vishal\n<b>┣⬡ ᴀɢᴇ :</b> 18+\n<b>┣⬡ ɢᴇɴᴅᴇʀ :</b> ᴍᴀʟᴇ\n<b>┣⬡ ᴩʟᴀᴄᴇ :</b> Iɴᴅɪᴀ 🇮🇳\n<b>┣⬡ ʟᴀɴɢᴜᴀɢᴇ :</b> Hindi\n<b>┣⬡ ꜱᴛᴜᴅy ɪɴ :</b> ㅤㅤ`,
     {
       parse_mode: "HTML",
       disable_web_page_preview: true,
@@ -87,7 +87,7 @@ bot.action("back", (ctx) => {
   const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
 
   ctx.editMessageText(
-    `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎</b>\n\n<b>• In This Bot Have Some Info About Me</b>`,
+    `<b>Hey 👋 ${nameWithLink}</b> <b>Welcome To My About Bot 😎</b>\n\n<b>• In This Bot Have Some Info About Me</b>`,
     {
       parse_mode: "HTML",
       disable_web_page_preview: true,
