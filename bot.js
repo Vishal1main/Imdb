@@ -13,6 +13,7 @@ bot.start((ctx) => {
     `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [
           [
@@ -34,6 +35,7 @@ bot.action("channels", (ctx) => {
     `<b>📢 My Channels:\n\n🎯 SkyHub4u <a href="https://t.me/Sky_hub4u">Click</a>\n🎯 Tmrbotz <a href="https://t.me/Tmr_Botz">Click</a></b>`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
       },
@@ -46,6 +48,7 @@ bot.action("mybots", (ctx) => {
     `<b>🤖 My Bots:\n\n🤖 Mʀ sᴇɴᴅᴇʀ™ <a href="https://t.me/Mr_Movie_Sender_Bot">Click</a>\n🤖 Pᴜsʜᴘᴀ ʙᴏᴛ™ <a href="https://t.me/Pushpa_Moviee_bot">Click</a>\n🤖 Aʟᴘʜᴀ ᴍᴏᴠɪᴇ ʙᴏᴛ™ <a href="https://t.me/Alphaa_Movie_Bot">Click</a>\n🤖 Tmr Spotify Bot <a href="https://t.me/Tmr_Spotify_Bot">Click</a>\n🤖 SkyHub Game 🎮 <a href="https://t.me/SkyhubGame_Bot">Click</a></b>`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
       },
@@ -58,6 +61,7 @@ bot.action("myid", (ctx) => {
     `<b>👤 My Info:\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ᴩʟᴀᴄᴇ : Iɴᴅɪᴀ 🇮🇳\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ :<spoiler>ㅤㅤ</spoiler></b>`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
       },
@@ -70,6 +74,7 @@ bot.action("contact", (ctx) => {
     `<b>💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
       },
@@ -85,6 +90,7 @@ bot.action("back", (ctx) => {
     `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
     {
       parse_mode: "HTML",
+      disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [
           [
