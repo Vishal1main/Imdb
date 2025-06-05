@@ -6,13 +6,26 @@ const app = express();
 
 // Telegram Bot Code
 bot.start((ctx) => {
-  ctx.replyWithHTML(
-    `<b>👋 Welcome to About Me Bot!</b>\n\nChoose an option below:`,
-    Markup.inlineKeyboard([
-      [Markup.button.callback("📢 Channels", "channels")],
-      [Markup.button.callback("🤖 My Bots", "mybots")],
-      [Markup.button.callback("👤 My Telegram ID", "myid")]
-    ])
+  const user = ctx.from;
+  const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
+
+  ctx.reply(
+    `👋 Welcome ${nameWithLink} to <b>About Me Bot!</b>\n\nChoose an option below:`,
+    {
+      parse_mode: "HTML",
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "📢 Channels", callback_data: "channels" },
+            { text: "🤖 My Bots", callback_data: "mybots" }
+          ],
+          [
+            { text: "👤 My Telegram ID", callback_data: "myid" },
+            { text: "📞 Contact", callback_data: "contact" }
+          ]
+        ]
+      }
+    }
   );
 });
 
@@ -52,18 +65,35 @@ bot.action("myid", (ctx) => {
   );
 });
 
-bot.action("back", (ctx) => {
+bot.action("contact", (ctx) => {
   ctx.editMessageText(
-    `<b>👋 Welcome to About Me Bot!</b>\n\nChoose an option below:`,
+    `<b>📞 Contact Info:</b>\n\n📬 Email: example@mail.com\n📱 Telegram: @yourusername`,
+    {
+      parse_mode: "HTML",
+      reply_markup: {
+        inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
+      },
+    }
+  );
+});
+
+bot.action("back", (ctx) => {
+  ctx.reply(
+    `👋 Welcome ${nameWithLink} to <b>About Me Bot!</b>\n\nChoose an option below:`,
     {
       parse_mode: "HTML",
       reply_markup: {
         inline_keyboard: [
-          [{ text: "📢 Channels", callback_data: "channels" }],
-          [{ text: "🤖 My Bots", callback_data: "mybots" }],
-          [{ text: "👤 My Telegram ID", callback_data: "myid" }]
-        ],
-      },
+          [
+            { text: "📢 Channels", callback_data: "channels" },
+            { text: "🤖 My Bots", callback_data: "mybots" }
+          ],
+          [
+            { text: "👤 My Telegram ID", callback_data: "myid" },
+            { text: "📞 Contact", callback_data: "contact" }
+          ]
+        ]
+      }
     }
   );
 });
