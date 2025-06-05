@@ -9,6 +9,10 @@ bot.start((ctx) => {
   const user = ctx.from;
   const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
 
+  bot.start((ctx) => {
+  const user = ctx.from;
+  const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
+
   ctx.reply(
     `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
     {
