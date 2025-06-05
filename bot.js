@@ -71,7 +71,7 @@ bot.action("myid", (ctx) => {
 
 bot.action("contact", (ctx) => {
   ctx.editMessageText(
-    `<b>💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer`,
+    `<b>💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer</b>`,
     {
       parse_mode: "HTML",
       disable_web_page_preview: true,
