@@ -9,9 +9,9 @@ bot.start((ctx) => {
   const user = ctx.from;
 
   ctx.reply(
-    `<b>Hey 👋 ${user.first_name} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
+    `*Hey 👋 ${escapeMarkdown(user.first_name)} Welcome To My About Bot 😎*\n\n• In This Bot Have Some Info About Me`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [
@@ -31,9 +31,9 @@ bot.start((ctx) => {
 
 bot.action("channels", (ctx) => {
   ctx.editMessageText(
-    `<b>📢 My Channels:\n\n🎯 SkyHub4u <a href="https://t.me/Sky_hub4u">Click</a>\n🎯 Tmrbotz <a href="https://t.me/Tmr_Botz">Click</a></b>`,
+    `*📢 My Channels:*\n\n🎯 SkyHub4u [Click](https://t.me/Sky_hub4u)\n🎯 Tmrbotz [Click](https://t.me/Tmr_Botz)`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
@@ -44,9 +44,9 @@ bot.action("channels", (ctx) => {
 
 bot.action("mybots", (ctx) => {
   ctx.editMessageText(
-    `<b>🤖 My Bots:\n\n🤖 Mʀ sᴇɴᴅᴇʀ™ <a href="https://t.me/Mr_Movie_Sender_Bot">Click</a>\n🤖 Pᴜsʜᴘᴀ ʙᴏᴛ™ <a href="https://t.me/Pushpa_Moviee_bot">Click</a>\n🤖 Aʟᴘʜᴀ ᴍᴏᴠɪᴇ ʙᴏᴛ™ <a href="https://t.me/Alphaa_Movie_Bot">Click</a>\n🤖 Tmr Spotify Bot <a href="https://t.me/Tmr_Spotify_Bot">Click</a>\n🤖 SkyHub Game 🎮 <a href="https://t.me/SkyhubGame_Bot">Click</a></b>`,
+    `*🤖 My Bots:*\n\n🤖 Mʀ sᴇɴᴅᴇʀ™ [Click](https://t.me/Mr_Movie_Sender_Bot)\n🤖 Pᴜsʜᴘᴀ ʙᴏᴛ™ [Click](https://t.me/Pushpa_Moviee_bot)\n🤖 Aʟᴘʜᴀ ᴍᴏᴠɪᴇ ʙᴏᴛ™ [Click](https://t.me/Alphaa_Movie_Bot)\n🤖 Tmr Spotify Bot [Click](https://t.me/Tmr_Spotify_Bot)\n🤖 SkyHub Game 🎮 [Click](https://t.me/SkyhubGame_Bot)`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
@@ -57,9 +57,9 @@ bot.action("mybots", (ctx) => {
 
 bot.action("myid", (ctx) => {
   ctx.editMessageText(
-    `<b>👤 My Info:\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ᴩʟᴀᴄᴇ : Iɴᴅɪᴀ 🇮🇳\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ : ㅤㅤ</b>`,
+    `*👤 My Info:*\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ᴩʟᴀᴄᴇ : Iɴᴅɪᴀ 🇮🇳\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ : ㅤㅤ`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
@@ -70,9 +70,9 @@ bot.action("myid", (ctx) => {
 
 bot.action("contact", (ctx) => {
   ctx.editMessageText(
-    `<b>💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer</b>`,
+    `*💸 For Paid Promotion:*\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
@@ -85,9 +85,9 @@ bot.action("back", (ctx) => {
   const user = ctx.from;
 
   ctx.editMessageText(
-    `<b>Hey 👋 ${user.first_name} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
+    `*Hey 👋 ${escapeMarkdown(user.first_name)} Welcome To My About Bot 😎*\n\n• In This Bot Have Some Info About Me`,
     {
-      parse_mode: "HTML",
+      parse_mode: "MarkdownV2",
       disable_web_page_preview: true,
       reply_markup: {
         inline_keyboard: [
@@ -105,10 +105,15 @@ bot.action("back", (ctx) => {
   );
 });
 
+// Helper function to escape MarkdownV2 special characters
+function escapeMarkdown(text) {
+  return text.replace(/[_*[\]()~`>#+-=|{}.!]/g, '\\$&');
+}
+
 // Launch bot
 bot.launch();
 
-// Webhook support for Render (don't hardcode port!)
+// Webhook support for Render
 const PORT = process.env.PORT || 3000;
 app.get("/", (req, res) => res.send("Bot is Running!"));
 app.listen(PORT, () => {
