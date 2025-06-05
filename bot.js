@@ -78,7 +78,10 @@ bot.action("contact", (ctx) => {
 });
 
 bot.action("back", (ctx) => {
-  ctx.reply(
+  const user = ctx.from;
+  const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
+
+  ctx.editMessageText(
     `👋 Welcome ${nameWithLink} to <b>About Me Bot!</b>\n\nChoose an option below:`,
     {
       parse_mode: "HTML",
