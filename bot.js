@@ -1,9 +1,9 @@
 const express = require("express");
 const TelegramBot = require("node-telegram-bot-api");
 
-// ✅ CONFIGURATION
+// 🔐 CONFIGURATION
 const TOKEN = "7256232380:AAE1E5x5QgHoBohWQGnhr5Ig2nvI34TelXs";
-const URL = "https://imdb-0hh5.onrender.com"; // ⚠️ Replace with your live Render domain
+const URL = "https://imdb-0hh5.onrender.com"; // ✅ Replace with your deployed URL
 const PORT = process.env.PORT || 3000;
 
 // ✅ EXPRESS SETUP
@@ -25,24 +25,24 @@ bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const name = msg.from.first_name || "User";
 
-  bot.sendMessage(chatId, 
-    `<b>Hey 👋 ${name}!\n\nWelcome To My About Bot 😎</b>\n\n• In This Bot, You Can Know More About Me.`, 
-    {
-      parse_mode: "HTML",
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "📢 Channels", callback_data: "help1" },
-            { text: "🤖 My Bots", callback_data: "help2" }
-          ],
-          [
-            { text: "👤 My Info", callback_data: "about1" },
-            { text: "💸 Paid Promo", callback_data: "about2" }
-          ]
+  const text = `<b>Hey 👋 ${name}!\n\nWelcome To My About Bot 😎</b>\n\n• In This Bot, You Can Know More About Me.`;
+
+  bot.sendMessage(chatId, text, {
+    parse_mode: "HTML",
+    disable_web_page_preview: true, // ✅ Web preview disabled
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "📢 Channels", callback_data: "help1" },
+          { text: "🤖 My Bots", callback_data: "help2" }
+        ],
+        [
+          { text: "👤 My Info", callback_data: "about1" },
+          { text: "💸 Paid Promo", callback_data: "about2" }
         ]
-      }
+      ]
     }
-  );
+  });
 });
 
 // ✅ Callback Handler
@@ -72,6 +72,7 @@ bot.on("callback_query", (query) => {
         chat_id: chatId,
         message_id: messageId,
         parse_mode: "HTML",
+        disable_web_page_preview: true,
         reply_markup: {
           inline_keyboard: [
             [
@@ -87,11 +88,12 @@ bot.on("callback_query", (query) => {
       });
   }
 
-  // Edit message with new content and back button
+  // ✏️ Edit with back button
   bot.editMessageText(text, {
     chat_id: chatId,
     message_id: messageId,
     parse_mode: "HTML",
+    disable_web_page_preview: true, // ✅ Disable preview here too
     reply_markup: {
       inline_keyboard: [
         [{ text: "🔙 Back", callback_data: "home" }]
