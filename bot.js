@@ -1,118 +1,97 @@
-const express = require('express');
-const { Telegraf, Markup } = require('telegraf');
+const express = require("express");
+const TelegramBot = require("node-telegram-bot-api");
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
-const app = express();
-
-// Telegram Bot Code
-bot.start((ctx) => {
-  const user = ctx.from;
-  const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
-
-  ctx.reply(
-    `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "📢 Channels", callback_data: "channels" },
-            { text: "🤖 My Bots", callback_data: "mybots" }
-          ],
-          [
-            { text: "👤 My Info", callback_data: "myid" },
-            { text: "💸 Paid Promo", callback_data: "contact" }
-          ]
-        ]
-      }
-    }
-  );
-});
-
-bot.action("channels", (ctx) => {
-  ctx.editMessageText(
-    `<b>📢 My Channels:\n\n🎯 SkyHub4u <a href="https://t.me/Sky_hub4u">Click</a>\n🎯 Tmrbotz <a href="https://t.me/Tmr_Botz">Click</a></b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
-      },
-    }
-  );
-});
-
-bot.action("mybots", (ctx) => {
-  ctx.editMessageText(
-    `<b>🤖 My Bots:\n\n🤖 Mʀ sᴇɴᴅᴇʀ™ <a href="https://t.me/Mr_Movie_Sender_Bot">Click</a>\n🤖 Pᴜsʜᴘᴀ ʙᴏᴛ™ <a href="https://t.me/Pushpa_Moviee_bot">Click</a>\n🤖 Aʟᴘʜᴀ ᴍᴏᴠɪᴇ ʙᴏᴛ™ <a href="https://t.me/Alphaa_Movie_Bot">Click</a>\n🤖 Tmr Spotify Bot <a href="https://t.me/Tmr_Spotify_Bot">Click</a>\n🤖 SkyHub Game 🎮 <a href="https://t.me/SkyhubGame_Bot">Click</a></b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
-      },
-    }
-  );
-});
-
-bot.action("myid", (ctx) => {
-  ctx.editMessageText(
-    `<b>👤 My Info:\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ᴩʟᴀᴄᴇ : Iɴᴅɪᴀ 🇮🇳\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ : ㅤㅤ</b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
-      },
-    }
-  );
-});
-
-bot.action("contact", (ctx) => {
-  ctx.editMessageText(
-    `<b>💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n📱 Telegram: @Tmr_Developer</b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [[{ text: "🔙 Back to Home", callback_data: "back" }]],
-      },
-    }
-  );
-});
-
-bot.action("back", (ctx) => {
-  const user = ctx.from;
-  const nameWithLink = `<a href="tg://user?id=${user.id}">${user.first_name}</a>`;
-
-  ctx.editMessageText(
-    `<b>Hey 👋 ${nameWithLink} Welcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`,
-    {
-      parse_mode: "HTML",
-      disable_web_page_preview: true,
-      reply_markup: {
-        inline_keyboard: [
-          [
-            { text: "📢 Channels", callback_data: "channels" },
-            { text: "🤖 My Bots", callback_data: "mybots" }
-          ],
-          [
-            { text: "👤 My Info", callback_data: "myid" },
-            { text: "💸 Paid Promo", callback_data: "contact" }
-          ]
-        ]
-      }
-    }
-  );
-});
-
-// Launch bot
-bot.launch();
-
-// Webhook support for Render (don't hardcode port!)
+// 🔐 CONFIGURATION
+const TOKEN = "7256232380:AAE1E5x5QgHoBohWQGnhr5Ig2nvI34TelXs";
+const URL = "https://imdb-0hh5.onrender.com"; // 🌐 Replace with your actual deployed URL
 const PORT = process.env.PORT || 3000;
-app.get("/", (req, res) => res.send("Bot is Running!"));
+
+// 🧠 EXPRESS SETUP
+const app = express();
+app.use(express.json());
+
+// 📡 CREATE BOT IN WEBHOOK MODE
+const bot = new TelegramBot(TOKEN);
+bot.setWebHook(`${URL}/bot${TOKEN}`);
+
+// 🛠 Express endpoint for Telegram
+app.post(`/bot${TOKEN}`, (req, res) => {
+  bot.processUpdate(req.body);
+  res.sendStatus(200);
+});
+
+// ✅ Start server
 app.listen(PORT, () => {
-  console.log(`✅ Bot is running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
+// 🟢 Start command handler
+bot.onText(/\/start/, (msg) => {
+  const chatId = msg.chat.id;
+  const name = msg.from.first_name;
+
+  bot.sendMessage(chatId, `👋 Welcome, ${name}!\n\nPlease choose an option:`, {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          { text: "❓ Help 1", callback_data: "help1" },
+          { text: "❓ Help 2", callback_data: "help2" }
+        ],
+        [
+          { text: "ℹ️ About 1", callback_data: "about1" },
+          { text: "ℹ️ About 2", callback_data: "about2" }
+        ]
+      ]
+    }
+  });
+});
+
+// 🔁 Callback handler
+bot.on("callback_query", (query) => {
+  const chatId = query.message.chat.id;
+  const messageId = query.message.message_id;
+  const data = query.data;
+
+  let text = "";
+  switch (data) {
+    case "help1":
+      text = "🛠 Help Section 1:\n\nHere you will get help for feature 1.";
+      break;
+    case "help2":
+      text = "🛠 Help Section 2:\n\nHere you will get help for feature 2.";
+      break;
+    case "about1":
+      text = "ℹ️ About Section 1:\n\nThis bot is created to assist you with features.";
+      break;
+    case "about2":
+      text = "ℹ️ About Section 2:\n\nThis is version 2.0 of the Telegram bot.";
+      break;
+    case "home":
+      return bot.editMessageText(`👋 Welcome back!\n\nPlease choose an option:`, {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: {
+          inline_keyboard: [
+            [
+              { text: "❓ Help 1", callback_data: "help1" },
+              { text: "❓ Help 2", callback_data: "help2" }
+            ],
+            [
+              { text: "ℹ️ About 1", callback_data: "about1" },
+              { text: "ℹ️ About 2", callback_data: "about2" }
+            ]
+          ]
+        }
+      });
+  }
+
+  bot.editMessageText(`${text}`, {
+    chat_id: chatId,
+    message_id: messageId,
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: "🔙 Back to Home", callback_data: "home" }]
+      ]
+    }
+  });
 });
