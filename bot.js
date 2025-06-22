@@ -30,16 +30,16 @@ bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   const name = msg.from.first_name;
 
-  bot.sendMessage(chatId, `👋 Welcome, ${name}!\n\nPlease choose an option:`, {
+  bot.sendMessage(chatId, `<b>Hey 👋, ${name}!\n\nWelcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`, {
     reply_markup: {
       inline_keyboard: [
         [
-          { text: "❓ Help 1", callback_data: "help1" },
-          { text: "❓ Help 2", callback_data: "help2" }
+          { text: "📢 Channels", callback_data: "help1" },
+          { text: "🤖 My Bots", callback_data: "help2" }
         ],
         [
-          { text: "ℹ️ About 1", callback_data: "about1" },
-          { text: "ℹ️ About 2", callback_data: "about2" }
+          { text: "👤 My Info", callback_data: "about1" },
+          { text: "💸 Paid Promo", callback_data: "about2" }
         ]
       ]
     }
@@ -61,13 +61,13 @@ bot.on("callback_query", (query) => {
       text = "🛠 Help Section 2:\n\nHere you will get help for feature 2.";
       break;
     case "about1":
-      text = "ℹ️ About Section 1:\n\nThis bot is created to assist you with features.";
+      text = "👤 My Info:\n\n━━━━━━━━━━➣\n┣⬡ ɴᴀᴍᴇ : Vishal\n┣⬡ ᴀɢᴇ : 18+\n┣⬡ ɢᴇɴᴅᴇʀ : ᴍᴀʟᴇ\n┣⬡ ʟᴀɴɢᴜᴀɢᴇ : Hindi\n┣⬡ ꜱᴛᴜᴅy ɪɴ : ㅤㅤ";
       break;
     case "about2":
-      text = "ℹ️ About Section 2:\n\nThis is version 2.0 of the Telegram bot.";
+      text = "💸 For Paid Promotion:\n\nDm Me For 💸 Paid Promotion\n🆔 I'd: @Tmr_Developer";
       break;
     case "home":
-      return bot.editMessageText(`👋 Welcome back!\n\nPlease choose an option:`, {
+      return bot.editMessageText(`<b>Hey 👋, ${name}!\n\nWelcome To My About Bot 😎\n\n• In This Bot Have Some Info About Me</b>`, {
         chat_id: chatId,
         message_id: messageId,
         reply_markup: {
@@ -90,7 +90,7 @@ bot.on("callback_query", (query) => {
     message_id: messageId,
     reply_markup: {
       inline_keyboard: [
-        [{ text: "🔙 Back to Home", callback_data: "home" }]
+        [{ text: "🔙 Back", callback_data: "home" }]
       ]
     }
   });
