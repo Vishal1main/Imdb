@@ -64,7 +64,7 @@ bot.on("callback_query", (query) => {
   let text = "";
   switch (data) {
     case "help1":
-      text = `<b>📢 Channels:</b>\n\n<b>• Sky hub4u | Backup <a href="https://t.me/Sky_hub4u">Click</a>\n• Sky Movie Update <a href="https://t.me/SkyMovieUpdate">Click</a>\n• Sky Movie Req4u <a href="https://t.me/Sky_Movie_req4u">Click</a>\n• Tᴍʀ ʙᴏᴛᴢ<a href="https://t.me/TMR_Botz">Click</a></b>`;
+      text = `<b>📢 Channels:</b>\n\n<b>• Sky hub4u | Backup <a href="https://t.me/Sky_hub4u">Click</a>\n• Sky Movie Update <a href="https://t.me/SkyMovieUpdate">Click</a>\n• Sky Movie Req4u <a href="https://t.me/Sky_Movie_req4u">Click</a>\n• Tᴍʀ ʙᴏᴛᴢ <a href="https://t.me/TMR_Botz">Click</a></b>`;
       break;
     case "help2":
       text = `<b>🤖 My Bots:</b>\n\n<b>• Aʟᴘʜᴀ ᴍᴏᴠɪᴇ ʙᴏᴛ™ <a href="https://t.me/Alphaa_Movie_Bot">Click</a>\n• Mʀ sᴇɴᴅᴇʀ™ <a href="https://t.me/Mr_Movie_Sender_Bot">Click</a>\n• Pᴜsʜᴘᴀ ʙᴏᴛ™ <a href="https://t.me/Pushpa_Moviee_bot">Click</a>\n• SkyHub Game 🎮 <a href="https://t.me/SkyhubGame_Bot">Click</a>\n• Tmr Spotify Bot <a href="https://t.me/Tmr_Spotify_Bot">Click</a></b>`;
